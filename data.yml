@@ -180,3 +180,4 @@ principles:
                   The packaging requirement is satisfied when either
                   a supported container build definition or a supported
                   OVF/OVA virtual machine image is present.
+                  
