@@ -1,5 +1,5 @@
-id: https://w3id.org/artifact-standards/example
-name: artifact_standards_example
+id: as:example
+name: Artifact Standards Example
 
 study_tags:
 
@@ -78,6 +78,7 @@ principles:
           evaluators to execute the artifact in a preconfigured environment.
 
         creation_guidance:
+
           description: >
             Authors must provide their artifacts as Container
             (Docker or Podman) or VM (OVF/OVA) images. If the artifact
@@ -95,6 +96,7 @@ principles:
           human:
 
             - id: as:container-vm-human-check
+
               description: >
                 Verify that the submitted artifact includes a Container
                 (Docker or Podman) or VM (OVF/OVA) image and that the
@@ -111,6 +113,7 @@ principles:
             checks:
 
               - id: as:container-present
+
                 description: >
                   Verify that a container build definition is present
                   in the artifact package.
@@ -144,6 +147,7 @@ principles:
                   Exit code 0.
 
               - id: as:vm-present
+
                 description: >
                   Verify that an OVF or OVA virtual machine artifact
                   is present.
@@ -170,6 +174,7 @@ principles:
             combination_rules:
 
               - id: as:packaging-present
+
                 operator: OR
 
                 checks:

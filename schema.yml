@@ -15,6 +15,7 @@ default_range: string
 imports:
   - linkml:types
 
+
 classes:
 
   Repository:
@@ -24,6 +25,30 @@ classes:
     tree_root: true
 
     attributes:
+
+      id:
+        identifier: true
+        range: uriorcurie
+        required: true
+
+      name:
+        range: string
+        required: true
+
+      study_tags:
+        description: >
+          Controlled vocabulary of study types or research contexts.
+        range: StudyTag
+        multivalued: true
+        inlined_as_list: true
+
+      artifact_tags:
+        description: >
+          Controlled vocabulary of artifact types or characteristics.
+        range: ArtifactTag
+        multivalued: true
+        inlined_as_list: true
+
       principles:
         range: Principle
         multivalued: true
@@ -51,16 +76,14 @@ classes:
 
       study_tags:
         description: >
-          Study types or characteristics for which the principle
-          is applicable.
-        range: StudyTag
+          References to study tags for which this principle is applicable.
+        range: uriorcurie
         multivalued: true
 
       artifact_tags:
         description: >
-          Types or characteristics of artifacts for which the principle
-          is applicable.
-        range: ArtifactTag
+          References to artifact tags for which this principle is applicable.
+        range: uriorcurie
         multivalued: true
 
       rationale:
@@ -82,7 +105,7 @@ classes:
   Implementation:
     description: >
       A concrete way of satisfying a principle. Implementations contain
-      guidance for artifact creators and guidance for artifact evaluators.
+      guidance for artifact creators and artifact evaluators.
 
     attributes:
 
@@ -99,18 +122,14 @@ classes:
 
       study_tags:
         description: >
-          Study types or characteristics for which this implementation
-          is applicable. These may be more specific than the tags of
-          the parent principle.
-        range: StudyTag
+          References to study tags for which this implementation is applicable.
+        range: uriorcurie
         multivalued: true
 
       artifact_tags:
         description: >
-          Artifact types or characteristics for which this implementation
-          is applicable. These may be more specific than the tags of
-          the parent principle.
-        range: ArtifactTag
+          References to artifact tags for which this implementation is applicable.
+        range: uriorcurie
         multivalued: true
 
       rationale:
@@ -126,6 +145,7 @@ classes:
           using this implementation.
         range: CreationGuidance
         required: true
+        inlined: true
 
       checks_guidance:
         description: >
@@ -133,12 +153,13 @@ classes:
           implementation has been satisfied.
         range: ChecksGuidance
         required: true
+        inlined: true
 
 
   CreationGuidance:
     description: >
       Guidance describing how an artifact author should implement
-      a particular standard implementation.
+      the principle using this implementation.
 
     attributes:
 
@@ -165,6 +186,7 @@ classes:
           Checks performed through human inspection or judgment.
         range: HumanCheck
         multivalued: true
+        inlined_as_list: true
 
       automated:
         description: >
@@ -324,8 +346,6 @@ classes:
         required: true
 
       description:
-        description: >
-          Human-readable explanation of the combination logic.
         range: string
 
 
